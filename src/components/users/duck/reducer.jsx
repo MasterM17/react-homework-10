@@ -2,7 +2,9 @@ import {
   GET_USERS_SUCCESS,
   GET_USERS_FAIL,
   GET_USERS_REQUEST,
-  DELETE_USER,
+  DELETE_USER_REQUEST,
+  DELETE_USER_SUCCESS,
+  DELETE_USER_FAIL,
 } from "./constants";
 
 const initalState = {
@@ -33,10 +35,22 @@ export default function reducer(state = initalState, action) {
         //isLoading:false
       };
 
-    case DELETE_USER:
+    case DELETE_USER_SUCCESS:
       return {
         ...state,
-        users: state.users.filter((user) => user.id !== action.payload),
+         users: state.users.filter((user) => user.id !== action.payload),
+      };
+
+    case DELETE_USER_REQUEST:
+      return {
+        ...state,
+       
+      };
+
+    case DELETE_USER_FAIL:
+      return {
+        ...state,
+        error: action.payload,
       };
 
     default:

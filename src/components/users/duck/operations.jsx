@@ -2,9 +2,11 @@ import {
   fetchUsersFail,
   fetchUsersRequest,
   fetchUsersSuccess,
-  deleteUserActions,
+  deleteUserRequest,
+  deleteUserSuccess,
+  deleteUserFail,
 } from "./actions";
-import { getUsers } from "./../../../api/usersApi";
+import { getUsers, deleteUsers } from "./../../../api/usersApi";
 import axios from "axios";
 
 export const fetchUsers = (requestParams) => {
@@ -22,14 +24,28 @@ export const fetchUsers = (requestParams) => {
   };
 };
 
-export const deleteUser = (id) => {
+// export const deleteUser = (id) => {
+//   return async (dispatch) => {
+//     try {
+//       await axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`);
+
+//       dispatch(deleteUserActions(id));
+//     } catch (err) {
+//       console.log("err message delete: ", err);
+//     }
+//   };
+// };
+
+export const removeUsers = (requestParams) => {
   return async (dispatch) => {
     try {
-      await axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`);
+      const result = await deleteUsers(requestParams);
 
-      dispatch(deleteUserActions(id));
+      dispatch(deleteUserSuccess(requestParams));
+
+      return result;
     } catch (err) {
-      console.log("err message delete: ", err);
+      dispatch(deleteUserFail(err));
     }
   };
 };

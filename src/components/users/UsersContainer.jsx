@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { UsersComponent } from "./UsersComponent";
-import { fetchUsers, deleteUser } from "./duck/operations";
+import { fetchUsers, removeUsers } from "./duck/operations";
 
 export default function UsersContainer() {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ export default function UsersContainer() {
   }, []);
 
   const handleDelet = (id) => {
-    dispatch(deleteUser(id));
+    dispatch(removeUsers(id));
   };
 
   return (
