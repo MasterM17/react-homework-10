@@ -42,7 +42,7 @@ export const removeUsers = (requestParams) => {
       const result = await deleteUsers(requestParams);
 
       dispatch(deleteUserSuccess(requestParams));
-
+      // console.log(`log from removeUsers: ${result}`);
       return result;
     } catch (err) {
       dispatch(deleteUserFail(err));

@@ -2,10 +2,12 @@ import { configureStore } from "@reduxjs/toolkit";
 import { createLogger } from "redux-logger";
 import { usersReducer } from "./components/users/duck/index";
 import { authReducer } from "./components/auth/duck/index";
+import { postsReducer } from "./components/posts/duck";
 
 const reducer = {
   usersReducer: usersReducer,
   authReducer: authReducer,
+  postsReducer: postsReducer,
 };
 
 const logger = createLogger();
